@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+    <script src="https://reqres.in/img/logo.png"></script>
+
+    <form id="form1" onsubmit="return false;">
+        <label >First Name: <input id="fname" type="text"></label><br>
+        <label >Last Name: <input id="lname" type="text"></label><br>
+        <label width="100px" height="100px">Image: <img id="img"
+                src="https://image.shutterstock.com/image-vector/dotted-spiral-vortex-royaltyfree-images-600w-2227567913.jpg"></label><br>
+        <label for="submit"><input type="submit" onclick="x()"></label>
+    </form>
+
+    <script>
+        function x() {
+            $.ajax({
+                url: "https://reqres.in/api/users/2",
+                success: function (res) {
+                    //alert("success fun..");
+                    $("#fname").val(res.data.first_name);
+                    $("#lname").val(res.data.last_name);
+                    $("#img").attr("src", res.data.avatar);
+                }
+            });
+            //alert("x fun..");
+            //return false;
+        }
+    </script>
+</body>
+
+</html>
